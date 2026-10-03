@@ -141,7 +141,10 @@ export function Home() {
                   </div>
                   <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-400">
                     <span className="font-medium text-stone-500">{pillar.count}</span>
-                    <Link to="/explore" className="text-stone-700 hover:underline inline-flex items-center gap-1 font-medium">
+                    <Link
+                      to={`/explore?category=${pillar.type}`}
+                      className="text-stone-700 hover:underline inline-flex items-center gap-1 font-medium"
+                    >
                       Explore &rarr;
                     </Link>
                   </div>
@@ -162,7 +165,10 @@ export function Home() {
                 Featured Goals & Dreams
               </h2>
             </div>
-            <Link to="/explore" className="text-sm font-medium text-stone-600 hover:text-stone-900 flex items-center gap-1.5">
+            <Link
+              to="/explore?category=goal"
+              className="text-sm font-medium text-stone-600 hover:text-stone-900 flex items-center gap-1.5"
+            >
               View all goals &rarr;
             </Link>
           </div>
@@ -185,7 +191,10 @@ export function Home() {
                 Recent Memories
               </h2>
             </div>
-            <Link to="/explore" className="text-sm font-medium text-stone-600 hover:text-stone-900 flex items-center gap-1.5">
+            <Link
+              to="/explore?category=memory"
+              className="text-sm font-medium text-stone-600 hover:text-stone-900 flex items-center gap-1.5"
+            >
               View all memories &rarr;
             </Link>
           </div>
@@ -208,7 +217,10 @@ export function Home() {
                 Interests & Milestones
               </h2>
             </div>
-            <Link to="/explore" className="text-sm font-medium text-stone-600 hover:text-stone-900 flex items-center gap-1.5">
+            <Link
+              to="/explore"
+              className="text-sm font-medium text-stone-600 hover:text-stone-900 flex items-center gap-1.5"
+            >
               View collection &rarr;
             </Link>
           </div>
