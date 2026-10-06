@@ -11,43 +11,30 @@ import { useItems } from '../hooks/useItems';
 export function ItemDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { items } = useItems();
+  const { items, updateItem, deleteItem } = useItems();
 
   // State for modals
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  // Find item by URL parameter
+  // Find item from shared items state by URL parameter
   const item = items.find((i) => i.id === id);
 
-  // =========================================================================
-  // TODO (For you to implement):
-  // 1. Hook up item lookup from custom hook or storageService: getItem(id)
-  // 2. Implement edit submit handler:
-  //    const handleUpdate = (updatedData) => {
-  //      updateItem(id, updatedData);
-  //      setIsEditModalOpen(false);
-  //    };
-  // 3. Implement delete confirmation handler:
-  //    const handleDelete = () => {
-  //      deleteItem(id);
-  //      setIsDeleteModalOpen(false);
-  //      navigate('/explore');
-  //    };
-  // =========================================================================
-
+  // Handle Edit submission
   const handleUpdate = (updatedData) => {
-    // TODO: Connect to updateItem(id, updatedData)
-    console.log('Update item submit:', updatedData);
-    alert('TODO: Implement updateItem logic in useItems.js!');
-    setIsEditModalOpen(false);
+    if (item) {
+      updateItem(item.id, updatedData);
+      setIsEditModalOpen(false);
+    }
   };
 
+  // Handle Delete submission
   const handleDelete = () => {
-    // TODO: Connect to deleteItem(id) and redirect
-    console.log('Delete item:', id);
-    alert('TODO: Implement deleteItem logic in useItems.js!');
-    setIsDeleteModalOpen(false);
+    if (item) {
+      deleteItem(item.id);
+      setIsDeleteModalOpen(false);
+      navigate('/explore');
+    }
   };
 
   if (!item) {

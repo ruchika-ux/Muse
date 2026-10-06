@@ -11,7 +11,7 @@ import { useItems } from '../hooks/useItems';
 import { CATEGORY_META } from '../data/seedData';
 
 export function Explore() {
-  const { items } = useItems();
+  const { items, addItem } = useItems();
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState('');
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -53,11 +53,9 @@ export function Explore() {
     return matchesCategory && matchesSearch;
   });
 
-  // Placeholder create submit handler
+  // 4. Handle Create Item submission
   const handleCreateSubmit = (formData) => {
-    // TODO: Connect to addItem(formData) in useItems.js
-    console.log('Create item submit:', formData);
-    alert('TODO: Implement addItem logic in useItems.js!');
+    addItem(formData);
     setIsCreateModalOpen(false);
   };
 
